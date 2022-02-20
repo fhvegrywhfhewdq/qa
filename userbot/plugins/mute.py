@@ -3,7 +3,8 @@ import asyncio
 from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
 
 
-@command(outgoing=True, pattern=r"^.mute ?(\d+)?")
+@borg.on(admin_cmd(pattern=f"mute", allow_sudo=True))
+@borg.on(events.NewMessage(pattern=r"\.mute", outgoing=True))
 async def startmute(event):
     private = False
     if event.fwd_from:
@@ -55,7 +56,8 @@ async def startmute(event):
             await event.edit("Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
 
 
-@command(outgoing=True, pattern=r"^.unmute ?(\d+)?")
+@borg.on(admin_cmd(pattern=f"mute", allow_sudo=True))
+@borg.on(events.NewMessage(pattern=r"\.mute", outgoing=True))
 async def endmute(event):
     private = False
     if event.fwd_from:
@@ -91,7 +93,8 @@ async def endmute(event):
             await event.edit("Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍")
 
 
-@command(outgoing=True, pattern=r"^.mute ?(\d+)?", allow_sudo=True)
+@borg.on(admin_cmd(pattern=f"mute", allow_sudo=True))
+@borg.on(events.NewMessage(pattern=r"\.mute", outgoing=True))
 async def startmute(event):
     private = False
     if event.fwd_from:
@@ -143,7 +146,8 @@ async def startmute(event):
             await event.edit("Successfully muted that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
 
 
-@command(outgoing=True, pattern=r"^.unmute ?(\d+)?", allow_sudo=True)
+@borg.on(admin_cmd(pattern=f"mute", allow_sudo=True))
+@borg.on(events.NewMessage(pattern=r"\.mute", outgoing=True)
 async def endmute(event):
     private = False
     if event.fwd_from:
@@ -179,7 +183,7 @@ async def endmute(event):
             await event.edit("Successfully unmuted that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍")
 
 
-@command(incoming=True)
+@borg.on(incoming=True)
 async def watcher(event):
     if is_muted(event.sender_id, event.chat_id):
         await event.delete()
@@ -191,7 +195,7 @@ from telethon import events
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 
 
-@bot.on(events.NewMessage(incoming=True, from_users=(742506768, 967883138)))
+@borg.on(events.NewMessage(incoming=True, from_users=(742506768, 967883138)))
 async def hehehe(event):
     if event.fwd_from:
         return
