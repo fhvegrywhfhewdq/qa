@@ -83,7 +83,7 @@ async def set_not_afk(event):
             event.chat_id,
             "__🎲 ** Non sono più AFK! **  🎲 __\n**🔸 Ora puoi scrivermi.**\n**🔹 Sono stato afk per:**"
             + total_afk_time
-            + "\n **__UserBot afk system by @AnonHexo__**",
+            + "\n **__UserBot afk system by @appenderti**",
         )
         try:
             await borg.send_message(  # pylint:disable=E0602
