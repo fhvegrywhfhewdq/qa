@@ -11,7 +11,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
 @borg.on(admin_cmd(pattern=f"hack", allow_sudo=True))
-@borg.on(events.NewMessage(pattern=r"\.(.*)", outgoing=True))
+@borg.on(events.NewMessage(pattern=r"\.hack", outgoing=True))
 async def _(event):
 
     if event.fwd_from:
