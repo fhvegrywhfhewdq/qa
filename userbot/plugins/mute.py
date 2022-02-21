@@ -146,9 +146,7 @@ async def _(e):
         await xx.eor(f"`{m}`", time=5)
 
 
-@borg.on(
-    pattern="mute( (.*)|$)", admins_only=True, manager=True, require="ban_users"
-)
+@borg.on(pattern="mute( (.*)|$)", admins_only=True, manager=True, require="ban_users")
 async def _(e):
     xx = await e.eor("`Muting...`")
     input = e.pattern_match.group(1).strip()
