@@ -6,7 +6,7 @@ from telethon.utils import get_display_name
 from . import eod, get_string, inline_mention, ultroid_bot, ultroid_cmd
 
 
-@ultroid_bot.on(events.NewMessage(incoming=True))
+@borg.on(events.NewMessage(incoming=True))
 async def watcher(event):
     if is_muted(event.chat_id, event.sender_id):
         await event.delete()
@@ -14,7 +14,7 @@ async def watcher(event):
         await event.delete()
 
 
-@ultroid_cmd(
+@borg.on(
     pattern="dmute( (.*)|$)",
 )
 async def startmute(event):
@@ -43,7 +43,7 @@ async def startmute(event):
     await xx.eor("`Successfully muted...`", time=3)
 
 
-@ultroid_cmd(
+@borg.on(
     pattern="undmute( (.*)|$)",
 )
 async def endmute(event):
@@ -112,7 +112,7 @@ async def _(e):
         await xx.eor(f"`{m}`", time=5)
 
 
-@ultroid_cmd(
+@borg.on(
     pattern="unmute( (.*)|$)",
     admins_only=True,
     manager=True,
@@ -146,7 +146,7 @@ async def _(e):
         await xx.eor(f"`{m}`", time=5)
 
 
-@ultroid_cmd(
+@borg.on(
     pattern="mute( (.*)|$)", admins_only=True, manager=True, require="ban_users"
 )
 async def _(e):
